@@ -5,8 +5,8 @@ for (let index = 0; index < inputs.length; index++) {
     let inputValue = inputs[index].value;
 
     inputGroup==`digits`?
-        inputs[index].addEventListener('click',digit(inputValue)):
-        inputs[index].addEventListener('click',taskExecute(inputGroup));
+        inputs[index].addEventListener('click',func => { digit(inputValue)}):
+        inputs[index].addEventListener('click',func => {taskExecute(inputGroup)});
 
     console.log(`event setup done ${inputGroup}:${inputValue}`);
 }
