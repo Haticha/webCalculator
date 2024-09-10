@@ -1,4 +1,5 @@
-const display = document.querySelector(`.display`)
+const display = document.querySelector(`.display`);
+
 const inputs = document.querySelectorAll(`input`);
 for (let index = 0; index < inputs.length; index++) {
     let inputGroup = inputs[index].className;
