@@ -63,7 +63,7 @@ function taskExecute(task){
         break;
     }
 }
-function addition(primary,secondary) {return primary + secondary;}
+function addition(primary,secondary) {return primary + secondary;} //issue numers handled as string
 function substraction(primary,secondary) {return primary - secondary;}
 function multiplication(primary,secondary) {return primary * secondary;}
 function devision(primary,secondary) {return primary / secondary;}
