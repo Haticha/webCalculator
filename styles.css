@@ -15,8 +15,16 @@ input:active{
     border-radius: 1em;
     border-color: black;
     display: flex;
+    flex-direction: column;
     height: 75px;
     width: 240px;
+    padding: 5px;
+}
+.currentEquasion{
+    text-align: right;
+}
+.currentNum{
+    font-size:  24px;
 }
 .values{
     display:grid;
