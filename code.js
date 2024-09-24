@@ -34,7 +34,7 @@ function taskExecute(task){
             if (solutionOperator == null) {
                 break;
             } else {
-                solution = solutionOperator(+primary,+secondary);
+                solution = solutionOperator(primary,secondary);
                 activeNum = solution;
                 previousSolution = `${primary}${solutionOperatorSymbol}${secondary}=`;
                 solutionOperatorSymbol = null;
@@ -56,8 +56,8 @@ function taskExecute(task){
             numInputActive = false;
         break;
         case `backspace`:
-            activeNum.length>1?
-            activeNum = activeNum.slice(0,-1):
+            activeNum>9?
+            activeNum = Number(activeNum.toString.slice(0,-1)):
             activeNum = 0, numInputActive = false;
         break;
         case `addition`:
