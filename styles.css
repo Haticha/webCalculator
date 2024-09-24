@@ -17,7 +17,7 @@ input:active{
     display: flex;
     flex-direction: column;
     height: 75px;
-    width: 240px;
+    width: 220px;
     padding: 5px;
 }
 .currentEquasion{
