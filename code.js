@@ -9,9 +9,9 @@ const previousEquasion = document.querySelector(`.previousEquasion`);
 const equasion = document.querySelector(`.equasion`);
 const currentNum = document.querySelector(`.currentNum`);
 function displayUpdate() {
-    previousEquasion.textContent = ``
-    equasion.textContent = `${primary>0?primary:''} ${solutionOperatorSymbol=null?``:solutionOperatorSymbol}`
-    currentNum.textContent = `${activeNum>0?activeNum:``}`
+    previousEquasion.textContent = previousSolution;
+    equasion.textContent = `${primary == 0 || primary==null?'':primary} ${solutionOperatorSymbol==null?``:solutionOperatorSymbol}`
+    currentNum.textContent = `${activeNum}`
 }
 const inputs = document.querySelectorAll(`input`);
 for (let index = 0; index < inputs.length; index++) {
@@ -35,6 +35,11 @@ function taskExecute(task){
                 break;
             } else {
                 solution = solutionOperator(+primary,+secondary);
+                activeNum = solution;
+                previousSolution = `${primary}${solutionOperatorSymbol}${secondary}=`;
+                solutionOperatorSymbol = null;
+                solutionOperator = null;
+                primary = 0;
             };
         break;
         case `clearLast`:
@@ -43,6 +48,7 @@ function taskExecute(task){
         break;
         case `clearAll`:
             //add other numbers of operation
+            previousSolution = 0
             solutionOperator = null;
             solutionOperatorSymbol = null;
             primary = 0;
@@ -55,28 +61,28 @@ function taskExecute(task){
             activeNum = 0, numInputActive = false;
         break;
         case `addition`:
-            numInputActive?primary = activeNum: primary = previousSolution;
+            primary = activeNum;
             numInputActive = false;
             solutionOperator = func =>addition(primary,secondary);
-            solutionOperatorSymbol=`&plus;`;
+            solutionOperatorSymbol=`+`;
         break;
         case `substraction`:
-            numInputActive?primary = activeNum: primary = previousSolution;
+            primary = activeNum;
             numInputActive = false;
             solutionOperator = func =>substraction(primary,secondary);
-            solutionOperatorSymbol=`&minus;`;
+            solutionOperatorSymbol=`-`;
         break;
         case `multiplication`:
-            numInputActive?primary = activeNum: primary = previousSolution;
+            primary = activeNum;
             numInputActive = false;
             solutionOperator = func =>multiplication(primary,secondary);
-            solutionOperatorSymbol=`&times;`;
+            solutionOperatorSymbol=`x`;
         break;
         case `devision`:
-            numInputActive?primary = activeNum: primary = previousSolution;
+            primary = activeNum;
             numInputActive = false;
             solutionOperator = func =>devision(primary,secondary);
-            solutionOperatorSymbol=`&divide;`;
+            solutionOperatorSymbol=`/`;
         break;
     }
     displayUpdate();
