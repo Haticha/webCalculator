@@ -17,14 +17,19 @@ function displayUpdate() {
 }
 //const calc = document.querySelector(`.calc`);////for window bound key listning
 document.addEventListener(`keydown`,(event)=>{
+    let numInput = Number(event.key);
+    if (0<numInput<10 && numInput!= NaN){ //not filtering somehow
+        constructNum(numInput);
+    }else{
     switch (event.key) {
-        case event.key.type == Number:
-            constructNum(event.key);
+        case `Plus`:
+            
         break;
         case `Enter`:
             taskExecute(`solution`);
         break;
     }
+}
 })
 
 const inputs = document.querySelectorAll(`input`);
