@@ -15,6 +15,17 @@ function displayUpdate() {
     equasion.textContent = `${primary == 0 || primary==null?'':primary} ${solutionOperatorSymbol==null?``:solutionOperatorSymbol}`
     currentNum.textContent = `${activeNum}`
 }
+//const calc = document.querySelector(`.calc`);////for window bound key listning
+document.addEventListener(`keydown`,(event)=>{
+    switch (event.key) {
+        case event.key.type == Number:
+            constructNum(event.key);
+        break;
+        case `Enter`:
+            taskExecute(`solution`);
+        break;
+    }
+})
 
 const inputs = document.querySelectorAll(`input`);
 for (let index = 0; index < inputs.length; index++) {
@@ -26,8 +37,11 @@ for (let index = 0; index < inputs.length; index++) {
 }
 
 function constructNum(num) {
-    numInputActive? activeNum=`${activeNum}`+`${num}`: activeNum=num, numInputActive=true ;
-    activeNum= Number(activeNum);
+    if (activeNum.toString().length < 17){
+        numInputActive? activeNum=`${activeNum}`+`${num}`: activeNum=num, numInputActive=true ;
+        activeNum= Number(activeNum);
+    }
+
     displayUpdate();
 }
 function taskExecute(task){
