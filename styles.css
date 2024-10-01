@@ -7,7 +7,7 @@ input:hover{
 
 }
 input:active{
-
+    background: radial-gradient(gray,white);
 }
 .display{
     background: linear-gradient(180deg,lightgreen,darkgreen);
@@ -31,11 +31,12 @@ input:active{
     grid-template-columns: 60px 60px 60px;
 }
 .digits{
+    background: radial-gradient(lightgray, darkgray);
 }
 .operators{
     display: flex;
     flex-direction: column;
-    margin: 2.5px,2.5px,2.5px,0px;
+    margin: 2.5px 2.5px 2.5px 0px;
 }
 .calc{
     display: flex;

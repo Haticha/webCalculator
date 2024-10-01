@@ -47,7 +47,6 @@ function taskExecute(task){
             numInputActive = false;
         break;
         case `clearAll`:
-            //add other numbers of operation
             previousSolution = 0
             solutionOperator = null;
             solutionOperatorSymbol = null;
