@@ -5,14 +5,17 @@ let previousSolution = 0;
 let solutionOperator = null;
 let solution = 0;
 let solutionOperatorSymbol = null;
+
 const previousEquasion = document.querySelector(`.previousEquasion`);
 const equasion = document.querySelector(`.equasion`);
 const currentNum = document.querySelector(`.currentNum`);
+
 function displayUpdate() {
     previousEquasion.textContent = previousSolution;
     equasion.textContent = `${primary == 0 || primary==null?'':primary} ${solutionOperatorSymbol==null?``:solutionOperatorSymbol}`
     currentNum.textContent = `${activeNum}`
 }
+
 const inputs = document.querySelectorAll(`input`);
 for (let index = 0; index < inputs.length; index++) {
     let inputGroup = inputs[index].className;
@@ -55,9 +58,11 @@ function taskExecute(task){
             numInputActive = false;
         break;
         case `backspace`:
-            activeNum>9?
-            activeNum = Number(activeNum.toString.slice(0,-1)):
+            let numberString = activeNum.toString();
+            numberString.length > 1?
+            activeNum = Number(numberString.slice(0,-1)):
             activeNum = 0, numInputActive = false;
+            numberString = ``;
         break;
         case `addition`:
             primary = activeNum;
@@ -87,7 +92,7 @@ function taskExecute(task){
             activeNum = activeNum*-1;
         break;
         case `decimal`:
-            activeNum = activeNum + `.`;
+            activeNum%1 == 0 ? activeNum = activeNum + `.`: activeNum=activeNum;
         break;
     }
     displayUpdate();
