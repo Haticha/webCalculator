@@ -83,6 +83,12 @@ function taskExecute(task){
             solutionOperator = func =>devision(primary,secondary);
             solutionOperatorSymbol=`/`;
         break;
+        case `negate`:
+            activeNum = activeNum*-1;
+        break;
+        case `decimal`:
+            activeNum = activeNum + `.`;
+        break;
     }
     displayUpdate();
 }
