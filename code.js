@@ -16,17 +16,32 @@ function displayUpdate() {
     currentNum.textContent = `${activeNum}`
 }
 //const calc = document.querySelector(`.calc`);////for window bound key listning
-document.addEventListener(`keydown`,(event)=>{
+document.addEventListener(`keyup`,(event)=>{
     let numInput = Number(event.key);
     if (numInput>0 && numInput<10){ 
         constructNum(numInput);
     }else{
     switch (event.key) {
-        case `Plus`:
-            
+        case `Add`|| `+`:
+            taskExecute(`addition`);
+        break;
+        case`Subtract`|| `-`:
+            taskExecute(`substraction`)
+        break;
+        case`Multipy`|| `*`:
+            taskExecute(`multiplication`)
+        break;
+        case`Devide`|| `/`:
+            taskExecute(`devision`)
         break;
         case `Enter`:
             taskExecute(`solution`);
+        break;
+        case `Backspace`:
+            taskExecute(`backspace`);
+        break;
+        case `Decimal` || `.` || `,`:
+            taskExecute(`decimal`);
         break;
     }
 }
@@ -50,6 +65,7 @@ function constructNum(num) {
     displayUpdate();
 }
 function taskExecute(task){
+    let numberString = activeNum.toString();
     switch (task) {
         case `solution`:
             secondary = activeNum;
@@ -77,7 +93,6 @@ function taskExecute(task){
             numInputActive = false;
         break;
         case `backspace`:
-            let numberString = activeNum.toString();
             numberString.length > 1?
             activeNum = Number(numberString.slice(0,-1)):
             activeNum = 0, numInputActive = false;
@@ -111,7 +126,9 @@ function taskExecute(task){
             activeNum = activeNum*-1;
         break;
         case `decimal`:
-            activeNum%1 == 0 ? activeNum = activeNum + `.`: activeNum=activeNum;
+            if (numberString.slice(-1)!=`.`) {
+                activeNum%1 == 0 ? activeNum = activeNum + `.`: activeNum=activeNum;
+            }
         break;
     }
     displayUpdate();
