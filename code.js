@@ -18,20 +18,20 @@ function displayUpdate() {
 //const calc = document.querySelector(`.calc`);////for window bound key listning
 document.addEventListener(`keyup`,(event)=>{
     let numInput = Number(event.key);
-    if (numInput>0 && numInput<10){ 
+    if (numInput>=0 && numInput<10){ 
         constructNum(numInput);
     }else{
     switch (event.key) {
-        case `Add`|| `+`:
+        case `Add`: case`+`:
             taskExecute(`addition`);
         break;
-        case`Subtract`|| `-`:
+        case`Subtract`: case`-`:
             taskExecute(`substraction`)
         break;
-        case`Multipy`|| `*`:
+        case`Multipy`: case`*`:
             taskExecute(`multiplication`)
         break;
-        case`Devide`|| `/`:
+        case`Devide`: case`/`:
             taskExecute(`devision`)
         break;
         case `Enter`:
@@ -40,7 +40,7 @@ document.addEventListener(`keyup`,(event)=>{
         case `Backspace`:
             taskExecute(`backspace`);
         break;
-        case `Decimal` || `.` || `,`:
+        case `Decimal`: case `.`: case `,`:
             taskExecute(`decimal`);
         break;
     }
