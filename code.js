@@ -10,7 +10,7 @@ let solutionOperatorSymbol = null;
 const previousEquasion = document.querySelector(`.previousEquasion`);
 const equasion = document.querySelector(`.equasion`);
 const currentNum = document.querySelector(`.currentNum`);
-
+displayUpdate();
 function displayUpdate() {
     previousEquasion.textContent = previousSolution;
     equasion.textContent = `${primary == 0 || primary==null?'':primary} ${solutionOperatorSymbol==null?``:solutionOperatorSymbol}`
