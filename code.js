@@ -1,6 +1,7 @@
 let activeNum = 0;
 let numInputActive = false;
 let primary = 0;
+let secondary = 0;
 let previousSolution = 0;
 let solutionOperator = null;
 let solution = 0;
@@ -16,7 +17,14 @@ function displayUpdate() {
     currentNum.textContent = `${activeNum}`
 }
 //const calc = document.querySelector(`.calc`);////for window bound key listning
+document.addEventListener(`keydown`,(event)=>{
+    if(event.key==`/`){
+        event.preventDefault();
+        taskExecute(`devision`)
+    }
+});
 document.addEventListener(`keyup`,(event)=>{
+    event.preventDefault();
     let numInput = Number(event.key);
     if (numInput>=0 && numInput<10){ 
         constructNum(numInput);
@@ -31,7 +39,7 @@ document.addEventListener(`keyup`,(event)=>{
         case`Multipy`: case`*`:
             taskExecute(`multiplication`)
         break;
-        case`Devide`: case`/`:
+        case`Devide`: case`/`: case`:`:
             taskExecute(`devision`)
         break;
         case `Enter`:
@@ -45,7 +53,7 @@ document.addEventListener(`keyup`,(event)=>{
         break;
     }
 }
-})
+});
 
 const inputs = document.querySelectorAll(`input`);
 for (let index = 0; index < inputs.length; index++) {
@@ -73,8 +81,14 @@ function taskExecute(task){
                 break;
             } else {
                 solution = solutionOperator(primary,secondary);
+                if(solution.toString().length>=17){
+                    solution= solution.toPrecision(17);
+                    previousSolution = `${primary}${solutionOperatorSymbol}
+                    ${secondary}=`;
+                }else{
+                    previousSolution = `${primary}${solutionOperatorSymbol}${secondary}=`;
+                }
                 activeNum = solution;
-                previousSolution = `${primary}${solutionOperatorSymbol}${secondary}=`;
                 solutionOperatorSymbol = null;
                 solutionOperator = null;
                 primary = 0;
