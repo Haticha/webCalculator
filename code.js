@@ -18,7 +18,7 @@ function displayUpdate() {
 //const calc = document.querySelector(`.calc`);////for window bound key listning
 document.addEventListener(`keydown`,(event)=>{
     let numInput = Number(event.key);
-    if (0<numInput<10 && numInput!= NaN){ //not filtering somehow
+    if (numInput>0 && numInput<10){ 
         constructNum(numInput);
     }else{
     switch (event.key) {
